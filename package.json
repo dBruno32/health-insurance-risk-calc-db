@@ -1,0 +1,25 @@
+{
+  "name": "health-risk-calculator",
+  "version": "1.0.0",
+  "description": "For Software Engineering, Labe-4",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dBruno32/health-insurance-risk-calc-db.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dBruno32/health-insurance-risk-calc-db/issues"
+  },
+  "homepage": "https://github.com/dBruno32/health-insurance-risk-calc-db#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^15.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
