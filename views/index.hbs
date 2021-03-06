@@ -1,9 +1,10 @@
 <h1>Welcome!</h1>
 
-<form action="POST">
+<form action="/calc" method="POST">
 
     <div class="form-group">
-        <select id="age" name="Age">
+        <label for="age" >Age:</label>
+        <select id="age" name="age">
             <option value="upTo30">Under 30</option>
             <option value="upTo45">Under 45</option>
             <option value="upTo60">Under 60</option>
@@ -12,23 +13,52 @@
     </div>
 
     <div class="form-group">
+        <label for="weight">Weight:</label>
         <input type="text" name="weight" id="weight" placeholder="Weight">
+        <label for="weight-measurement"> in lbs</label>
     </div>
 
     <div class="form-group">
+        <label for="height">Height:</label>
         <input type="text" name="height" id="height" placeholder="Height">
+        <label for="height-measurement"> in ft' in"</label>
     </div>
 
     <div class="form-group">
-        <input type="text" name="systolic-bp" id="systeolic-bp" placeholder="Systolic Blood Pressure">
+        <label for="systolic">Systolic Blood Pressure:</label>
+        <select id="systolic" name="systolic">
+            <option value="lessThan120">Under 120</option>
+            <option value="upTo129">120 To 129</option>
+            <option value="upTo139">130 To 139</option>
+            <option value="plus140">140 And Over</option>
+            <option value="plus180">180 And Over</option>
+        </select>
     </div>
 
     <div class="form-group">
-        <input type="text" name="diastolic-bp" id="diastolic-bp" placeholder="Diastolic Blood Pressure">
+        <label for="diastolic">Diastolic Blood Pressure:</label>
+        <select id="diastolic" name="diastolicp">
+            <option value="upTo80">Under 80</option>
+            <option value="upTo89">80 To 89</option>
+            <option value="plus90">90 And Over</option>
+            <option value="plus120">120 And Over</option>
+        </select>
     </div>
     
     <div class="form-group">
-        <input type="text" name="family-disease" id="family-disease" placeholder="Family Disease">
+        <label for="family-disease">Family History:</label>
+       <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="diabetes" name="diabetes">
+            <label class="form-check-label" for="inlineCheckbox1">Diabetes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cancer" name="cancer">
+            <label class="form-check-label" for="inlineCheckbox2">Cancer</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="alzheimers" name="alzheimers">
+            <label class="form-check-label" for="inlineCheckbox3">Alzheimer's</label>
+        </div>
     </div>
 
 

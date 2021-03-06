@@ -22,6 +22,9 @@ app.set('view engine', 'hbs');
 //  Static Files @ Local DIR - 'src'
 app.use(express.static(path.join(__dirname, 'src')));
 
+app.use(express.json());
+app.use(express.urlencoded());
+
 app.use('/', require('./routes/index.js'));
 
 
