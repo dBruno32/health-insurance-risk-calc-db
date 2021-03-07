@@ -3,7 +3,6 @@ const bmiScore = document.getElementById('bmiScore').innerHTML;
 const bpScore = document.getElementById('bpScore').innerHTML;
 const familyHistoryScore = document.getElementById('familyHistoryScore').innerHTML;
 
-
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'horizontalBar',
@@ -24,7 +23,8 @@ var chart = new Chart(ctx, {
             xAxes: [{
                 display: true,
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    suggestedMax: 75
                 }
             }]
         }

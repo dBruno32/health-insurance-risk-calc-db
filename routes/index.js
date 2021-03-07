@@ -17,6 +17,16 @@ router.post('/calc', (req, res) => {
     const cancer = req.body.cancer;
     const alzheimers = req.body.alzheimers;
 
+    // Input Validation: Empty Weight and/or Height
+    if(weight == "" || height == "") {
+        return res.render('./errors/emptyfield');
+    }
+
+    // Input Validation: Included non-numbers
+    if(isNaN(parseInt(weight)) || isNaN(parseInt(height)) ) {
+        return res.render('./errors/nonnumbers');
+    }
+
     const user = new User(
         age, height, weight, 
         systolic, diastolic, 
@@ -25,12 +35,13 @@ router.post('/calc', (req, res) => {
 
 
     res.render('summary', {
-         ageScore: user.getAgeScore(),
-         bmiScore: user.getBMIScore(),
-         bpScore: user.getBloodPressureScore(),
-         familyHistoryScore: user.getFamilyHistoryScore(),
-         totalScore: user.getTotalScore(),
-         scoreString: user.getScoreString()
+        layout: 'summary', 
+        ageScore: user.getAgeScore(),
+        bmiScore: user.getBMIScore(),
+        bpScore: user.getBloodPressureScore(),
+        familyHistoryScore: user.getFamilyHistoryScore(),
+        totalScore: user.getTotalScore(),
+        scoreString: user.getScoreString()
     });
 });
 

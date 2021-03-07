@@ -52,20 +52,22 @@ class User {
     }
 
     calculateBMI () {
-        return this.weight / this.height;
+        return parseInt(this.weight) / parseInt(this.height);
     }
 
     getBMIScore () { 
         let score = 0;
-        let BMI = this.calculateBMI();
+        let BMI = parseInt(this.calculateBMI());
+        console.log(BMI);
     
-        if (BMI < 24.8 && BMI > 18.5) {
+        if (BMI <= 24.9 && BMI >= 18.5) {
             return score;
         } 
-        else if(BMI < 29.9 && BMI > 25) {
+        if (BMI <= 29.9 && BMI >= 25) {
             score = 30;
             return score;
-        } else {
+        } 
+        if (BMI >= 30) {
             score = 75;
             return score;
         }    
