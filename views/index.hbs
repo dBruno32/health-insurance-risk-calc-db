@@ -27,7 +27,7 @@
     <div class="form-group">
         <label for="systolic">Systolic Blood Pressure:</label>
         <select id="systolic" name="systolic">
-            <option value="lessThan120">Under 120</option>
+            <option value="upTo120">Under 120</option>
             <option value="upTo129">120 To 129</option>
             <option value="upTo139">130 To 139</option>
             <option value="plus140">140 And Over</option>
@@ -37,7 +37,7 @@
 
     <div class="form-group">
         <label for="diastolic">Diastolic Blood Pressure:</label>
-        <select id="diastolic" name="diastolicp">
+        <select id="diastolic" name="diastolic">
             <option value="upTo80">Under 80</option>
             <option value="upTo89">80 To 89</option>
             <option value="plus90">90 And Over</option>
@@ -48,20 +48,20 @@
     <div class="form-group">
         <label for="family-disease">Family History:</label>
        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="diabetes" name="diabetes">
-            <label class="form-check-label" for="inlineCheckbox1">Diabetes</label>
+            <input class="form-check-input" type="checkbox" id="diabetes" value="diabetes" name="diabetes">
+            <label class="form-check-label" for="diabetes">Diabetes</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cancer" name="cancer">
-            <label class="form-check-label" for="inlineCheckbox2">Cancer</label>
+            <input class="form-check-input" type="checkbox" id="cancer" value="cancer" name="cancer">
+            <label class="form-check-label" for="cancer">Cancer</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="alzheimers" name="alzheimers">
+            <input class="form-check-input" type="checkbox" id="alzheimers" value="alzheimers" name="alzheimers">
             <label class="form-check-label" for="inlineCheckbox3">Alzheimer's</label>
         </div>
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Calculate</button>
+    <button type="submit" class="btn btn-primary" id="calculate-form-button">Calculate</button>
     
 </form>

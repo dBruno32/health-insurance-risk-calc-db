@@ -37,12 +37,12 @@ class User {
     getAgeScore() {
         let score = 0;
     
-        if (this.age < 30) {
+        if (this.age == "upTo30") {
             return score;
-        } else if (this.age < 45) {
+        } else if (this.age == "upTo45") {
             score = 10;
             return score;
-        } else if (this.age < 60) {
+        } else if (this.age == "upTo60") {
             score = 20;
             return score;
         } else {
@@ -57,11 +57,12 @@ class User {
 
     getBMIScore () { 
         let score = 0;
-        let BMI = calculateBMI();
+        let BMI = this.calculateBMI();
     
-        if(BMI < 24.8 && BMI > 18.5) {
+        if (BMI < 24.8 && BMI > 18.5) {
             return score;
-        } else if(BMI < 29.9 && BMI > 25) {
+        } 
+        else if(BMI < 29.9 && BMI > 25) {
             score = 30;
             return score;
         } else {
@@ -70,28 +71,64 @@ class User {
         }    
     } 
 
-    getBloodPressure() {
+    getBloodPressureScore() {
         let score = 0;
-    
-        if(this.sysBP < 120 && this.diasBP < 80) {
+
+        if(this.sysBP == "upTo120" && this.diasBP == "upTo80") {
             return score;
-        } else if((sBPthis.sysBP < 129 && this.sysBP > 120 ) && this.diasBP < 80) {
+        } else if(this.sysBP == "upTo129" && this.diasBP == "upTo80") {
             score = 15;
             return score;
-        } else if((sthis.sysBP < 139 && this.sysBP > 130 ) || (this.diasBP < 89 && this.diasBP > 80)) {
+        } else if((this.sysBP == "upTo139") || (this.diasBP == "upTo89")) {
             score = 30;
             return score;
-        } else if(this.sysBP > 140 || this.diasBP > 90) {
+        } else if(this.sysBP == "plus140" || this.diasBP == "plus90") {
             score = 75;
             return score;
-        } else if(this.sysBP > 180 || this.diasBP > 120) {
+        } else if(this.sysBP == "plus180" || this.diasBP == "plus120") {
             score = 100;
             return score;
-        }        
+        }    
     }
 
     getFamilyHistoryScore() {
-        return this.familyHistory.length * 10;
+        let score = 0;
+
+        this.familyHistory.forEach(disease => {
+
+            if(disease) {
+                score += 10;
+            }
+        });
+
+        return score;
+    }
+
+    calculateTotalScore() {
+        let score = 0;
+        score += this.getAgeScore();
+        score += this.getBMIScore();
+        score += this.getBloodPressureScore();
+        score += this.getFamilyHistoryScore();
+        return score;
+    }
+
+    getTotalScore() {
+        return this.calculateTotalScore();
+    }
+
+    getScoreString() {
+        let score = this.calculateTotalScore();
+
+        if (score <= 20 ) {
+            return "Low Risk";
+        } else if (score <= 50) {
+            return "Moderate Risk";
+        } else if (score <= 75) {
+            return "High Risk";
+        } else {
+            return "Uninsurable";
+        }
     }
 }
 
