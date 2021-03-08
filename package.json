@@ -1,8 +1,8 @@
 {
   "name": "health-risk-calculator",
   "version": "1.0.0",
-  "description": "For Software Engineering, Labe-4",
-  "main": "calculator.js",
+  "description": "For Software Engineering, Lab-4",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
