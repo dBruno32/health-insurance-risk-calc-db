@@ -2,7 +2,7 @@
 
 :: ----------------------
 :: KUDU Deployment Script
-:: Version: 1.0.17
+:: Version: 0.2.2
 :: ----------------------
 
 :: Prerequisites
@@ -98,15 +98,25 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 call :SelectNodeVersion
 
 :: 3. Install npm packages
-IF EXIST "%DEPLOYMENT_TARGET%\package.json"(
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd !NPM_CMD! install --production
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
+
+:: 4. Move packages around
+IF EXIST "%DEPLOYMENT_TARGET%\node_modules" (
     pushd "%DEPLOYMENT_TARGET%"
-    call : ExecuteCmd!NPM_CMD! install
-    call : ExecuteCmd!NPM_CMD! run tsc
-    IF!ERRORLEVEL! NEQ 0 goto error
-    popd
+    mv ".\node_modules\jquery\dist\jquery.min.js" ".\public\jquery.min.js"
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: Post deployment stub
+IF DEFINED POST_DEPLOYMENT_ACTION call "%POST_DEPLOYMENT_ACTION%"
+IF !ERRORLEVEL! NEQ 0 goto error
+
 goto end
 
 :: Execute command routine that will echo out when error
