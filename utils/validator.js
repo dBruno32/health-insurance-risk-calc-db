@@ -5,7 +5,7 @@ class Validator {
         console.log("testing testInputIsNumber");
         let condition = false;
 
-        if(!isNaN(parseInt(inputIn))) {
+        if(!isNaN(parseFloat(inputIn))) {
             console.log("ip: " + inputIn + " cd: " + condition);
             return condition == true;
         } else {
