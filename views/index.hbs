@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="card">
+        <h1>Welcome to the Health Insurance Risk Calculator</h1>
+    </div>
+
+    <br>
+    <div class="card">
+        <h2>About</h2>
+        <br>
+        <p>Hi, please see below for a form to enter your Health metadata.<br>
+        Please note, the calculator should receive input that is in US English Standards<br>
+        This means, weight should be entered in lbs and height should be entered in ft' in". <br>
+        Once you click CALCULATE on a valid form, you will be redirected to a Summary Page</p>
+    </div>
+    <div class="card">
+        <br>
+        <form action="/calc" method="POST" name="riskForm">
+
+            <div class="form-group">
+                <label for="age" >Age:</label>
+                <select id="age" name="age">
+                    <option value="upTo30">Under 30</option>
+                    <option value="upTo45">Under 45</option>
+                    <option value="upTo60">Under 60</option>
+                    <option value="over60">60 And Over</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="text" name="weight" id="weight" placeholder="Weight">
+                <label for="weight-measurement"> in lbs</label>
+            </div>
+
+            <div class="form-group">
+                <label for="height">Height:</label>
+                <input type="text" name="height" id="height" placeholder="Height">
+                <label for="height-measurement"> in ft' in"</label>
+            </div>
+
+            <div class="form-group">
+                <label for="systolic">Systolic Blood Pressure:</label>
+                <select id="systolic" name="systolic">
+                    <option value="upTo120">Under 120</option>
+                    <option value="upTo129">120 To 129</option>
+                    <option value="upTo139">130 To 139</option>
+                    <option value="plus140">140 And Over</option>
+                    <option value="plus180">180 And Over</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="diastolic">Diastolic Blood Pressure:</label>
+                <select id="diastolic" name="diastolic">
+                    <option value="upTo80">Under 80</option>
+                    <option value="upTo89">80 To 89</option>
+                    <option value="plus90">90 And Over</option>
+                    <option value="plus120">120 And Over</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="family-disease">Family History:</label>
+            <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="diabetes" value="diabetes" name="diabetes">
+                    <label class="form-check-label" for="diabetes">Diabetes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="cancer" value="cancer" name="cancer">
+                    <label class="form-check-label" for="cancer">Cancer</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="alzheimers" value="alzheimers" name="alzheimers">
+                    <label class="form-check-label" for="inlineCheckbox3">Alzheimer's</label>
+                </div>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary" id="calculate-form-button" onsubmit="validateForm()">Calculate</button>
+            
+        </form>
+    </div>
+</div>
