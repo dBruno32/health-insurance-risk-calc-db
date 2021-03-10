@@ -24,14 +24,14 @@ router.post('/calc', (req, res) => {
   const v = new validator();
 
   // Empty Input
-  if(v.testInputIsEmpty(height) || v.testInputIsEmpty(weight)) {
-    return res.render('errors/emptyfield');
-  }
+  //if(v.testInputIsEmpty(height) || v.testInputIsEmpty(weight)) {
+  //  return res.render('errors/emptyfield');
+ // }
 
   // Non Numbers
-  if(!v.testInputIsNumber(height) || !v.testInputIsNumber(weight)) {
-    return res.render('errors/nonnumbers');
-  }
+  //if(!v.testInputIsNumber(height) || !v.testInputIsNumber(weight)) {
+  //  return res.render('errors/nonnumbers');
+  //}
 
   // Instantiates user
   const user = new User(
