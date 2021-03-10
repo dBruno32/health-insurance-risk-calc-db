@@ -8,16 +8,17 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+// Collect & calculate results from form
+router.post('/calc', (req, res) => {
+  res.redirect('summary');
+});
+
 // Summary
 router.get('/summary', (req,res) => {
   res.render('summary', {
-    layout: summary
+    template: 'summary'
   });
 });
 
-// Collect & calculate results from form
-router.post('/calc', (req, res) => {
-  res.redirect('/summary');
-});
 
 module.exports = router;
