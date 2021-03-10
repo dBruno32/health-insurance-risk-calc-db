@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const validator = require('../utils/validator');
 
 
 // Home 
@@ -18,6 +19,17 @@ router.post('/calc', (req, res) => {
   const diabetes = req.body.diabetes;
   const cancer = req.body.cancer;
   const alzheimers = req.body.alzheimers;
+
+  v = new validator();
+
+  if(v.testInputIsEmpty(height) || v.testInputIsEmpty(weight)) {
+    return res.render('errors/emptyfield');
+  }
+
+  if(!v.testInputIsNumber(height) || !v.testInputIsNumber(weight)) {
+    return res.render('errors/nonnumbers');
+  }
+
 
   const user = new User(
     age, height, weight,
