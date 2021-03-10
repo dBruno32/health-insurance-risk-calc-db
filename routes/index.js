@@ -19,26 +19,26 @@ router.post('/calc', (req, res) => {
   const diabetes = req.body.diabetes;
   const cancer = req.body.cancer;
   const alzheimers = req.body.alzheimers;
+  
+  // Validations on user input
+  const v = new validator();
 
-  v = new validator();
-
+  // Empty Input
   if(v.testInputIsEmpty(height) || v.testInputIsEmpty(weight)) {
     return res.render('errors/emptyfield');
   }
 
+  // Non Numbers
   if(!v.testInputIsNumber(height) || !v.testInputIsNumber(weight)) {
     return res.render('errors/nonnumbers');
   }
 
-
+  // Instantiates user
   const user = new User(
     age, height, weight,
     systolic, diastolic,
     [diabetes, cancer, alzheimers]
   );
-
-  // TODO: Validation
-  //  res.redirect();
 
   res.render('summary', {
     layout: 'summary',
