@@ -29,9 +29,9 @@ router.post('/calc', (req, res) => {
   }
 
   // Non Numbers
-  //if(!v.testInputIsNumber(height) || !v.testInputIsNumber(weight)) {
-  //  return res.render('errors/nonnumbers');
-  //}
+  if(!v.testInputIsNumber(weight)) {
+    return res.render('errors/nonnumbers');
+  }
 
   // Instantiates user
   const user = new User(

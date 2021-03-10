@@ -4,9 +4,8 @@ class Validator {
     testInputIsNumber(inputIn) {
         console.log("testing testInputIsNumber");
         let condition = false;
-        let reg = /^[0-9]*[.]?[0-9]*$/;
 
-        if(reg.test(inputIn)) {
+        if(!isNaN(parseInt(inputIn))) {
             console.log("ip: " + inputIn + " cd: " + condition);
             return condition == true;
         } else {
