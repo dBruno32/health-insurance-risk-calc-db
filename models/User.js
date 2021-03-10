@@ -58,7 +58,6 @@ class User {
     getBMIScore () { 
         let score = 0;
         let BMI = parseInt(this.calculateBMI());
-        console.log(BMI);
     
         if (BMI <= 24.9 && BMI >= 18.5) {
             return score;

@@ -10,13 +10,32 @@ router.get('/', (req, res) => {
 
 // Collect & calculate results from form
 router.post('/calc', (req, res) => {
-  res.redirect('summary');
-});
+  const age = req.body.age;
+  const height = req.body.height;
+  const weight = req.body.weight;
+  const systolic = req.body.systolic;
+  const diastolic = req.body.diastolic;
+  const diabetes = req.body.diabetes;
+  const cancer = req.body.cancer;
+  const alzheimers = req.body.alzheimers;
 
-// Summary
-router.get('/summary', (req,res) => {
+  const user = new User(
+    age, height, weight,
+    systolic, diastolic,
+    [diabetes, cancer, alzheimers]
+  );
+
+  // TODO: Validation
+  //  res.redirect();
+
   res.render('summary', {
-    template: 'summary'
+    layout: 'summary',
+    totalScore: user.getTotalScore(),
+    scoreString: user.getScoreString(),
+    ageScore: user.getAgeScore(),
+    bmiScore: user.getBMIScore(),
+    bpScore: user.getBloodPressureScore(),
+    familyHistoryScore: user.getFamilyHistoryScore(),
   });
 });
 
