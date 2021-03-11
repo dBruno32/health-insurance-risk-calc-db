@@ -2,33 +2,25 @@ class Validator {
     constructor() { }
 
     testInputIsNumber(inputIn) {
-        console.log("testing testInputIsNumber");
+        console.log(inputIn);
         let condition = false;
 
-        if(!isNaN(parseFloat(inputIn))) {
-            console.log("ip: " + inputIn + " cd: " + condition);
-            return condition == true;
-        } else {
-            console.log("ip: " + inputIn + " cd: " + condition);
+        if(isNaN(inputIn)) {
             return condition;
+        } else {
+            return condition = true;
         }  
     }
 
     testInputIsEmpty(inputIn) {
-        console.log("testing testInputIsEmpty");
         let condition = false;
 
         if(inputIn == "") {
-            console.log("ip: " + inputIn + " cd: " + condition);
             return condition = true;       
         } else {
-            console.log("ip: " + inputIn + " cd: " + condition);
             return condition; 
         } 
     }
 }
-
-
-
 
 module.exports = Validator;

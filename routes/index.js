@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 // Collect & calculate results from form
 router.post('/calc', (req, res) => {
   const age = req.body.age;
-  const height = req.body.height;
+  const heightInFeet = req.body.heightfeet;
+  const heightInInches = req.body.heightinches;
   const weight = req.body.weight;
   const systolic = req.body.systolic;
   const diastolic = req.body.diastolic;
@@ -24,18 +25,18 @@ router.post('/calc', (req, res) => {
   const v = new validator();
 
   // Empty Input
-  if(v.testInputIsEmpty(height) || v.testInputIsEmpty(weight)) {
+  if(v.testInputIsEmpty(weight)) {
     return res.render('errors/emptyfield');
   }
 
-  // Non Numbers
-  if(!v.testInputIsNumber(weight)) {
+  // Weight Non Numbers
+  if(v.testInputIsNumber(weight) == false) {
     return res.render('errors/nonnumbers');
   }
 
   // Instantiates user
   const user = new User(
-    age, height, weight,
+    age, [heightInFeet, heightInInches], weight,
     systolic, diastolic,
     [diabetes, cancer, alzheimers]
   );

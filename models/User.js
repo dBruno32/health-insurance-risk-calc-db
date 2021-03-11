@@ -51,13 +51,82 @@ class User {
         }
     }
 
+    // Destructures array into hif (height in feet)
+    convertFeetToInches() {
+        const hifIn = this.height[0];
+        let hif = 0;
+        const inches = 12;
+        
+        if(hifIn == "one-foot") {
+            return hif = 1 * inches;
+        } else if (hifIn == "two-foot") {
+            return hif = 2 * inches;
+        } else if (hifIn == "three-foot") {
+            return hif = 3 * inches;
+        } else if (hifIn == "four-foot") {
+            return hif = 4 * inches;
+        } else if (hifIn == "five-foot") {
+            return hif = 5 * inches;
+        } else if (hifIn == "six-foot") {
+            return hif = 6 * inches;
+        } else if (hifIn == "seven-foot") {
+            return hif = 7 * inches;
+        } else if (hifIn == "eight-foot") {
+            return hif = 8 * inches;
+        }
+    }
+
+    // Destructures array into hii (height in inches)
+    convertInchesToNum() {
+        const hiiIn = this.height[1];
+        let hii = 0;
+        
+        if(hiiIn == "one-inch") {
+            return hii = 1;
+        } else if (hiiIn == "two-inch") {
+            return hii = 2;
+        } else if (hiiIn == "three-inch") {
+            return hii = 3;
+        } else if (hiiIn == "four-inch") {
+            return hii = 4;
+        } else if (hiiIn == "five-inch") {
+            return hii = 5;
+        } else if (hiiIn == "six-inch") {
+            return hii = 6;
+        } else if (hiiIn == "seven-inch") {
+            return hii = 7;
+        } else if (hiiIn == "eight-inch") {
+            return hii = 8;
+        } else if (hiiIn == "nine-inch") {
+            return hii = 9;
+        } else if (hiiIn == "ten-inch") {
+            return hii = 10;
+        } else if (hiiIn == "eleven-inch") {
+            return hii = 11;
+        }
+    }
+
+    convertHeightToCm() {
+        const conversion = 2.54;
+
+        return (this.convertFeetToInches() + this.convertInchesToNum()) * conversion;
+    }
+
+    convertPoundsToKG() {
+        const conversion = 2.205;
+        return parseFloat(this.weight) / conversion;
+    }
+
     calculateBMI () {
-        return parseInt(this.weight) / parseInt(this.height);
+        const  h = this.convertHeightToCm();
+        const w = this.convertPoundsToKG();
+
+        return (w / (h*h)) * 10000;
     }
 
     getBMIScore () { 
         let score = 0;
-        let BMI = parseInt(this.calculateBMI());
+        let BMI = parseFloat(this.calculateBMI());
     
         if (BMI <= 24.9 && BMI >= 18.5) {
             return score;
